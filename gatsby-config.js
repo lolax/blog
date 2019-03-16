@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Labs in Reflection`,
+    title: `writing.lola`,
     author: `Lola Heffernan`,
-    description: `Thoughts about labs.`,
+    description: ``,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
     social: {
       twitter: `kylemathews`,
