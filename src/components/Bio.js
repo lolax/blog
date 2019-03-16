@@ -34,7 +34,7 @@ function Bio() {
               }}
             />
             <p>
-              Transcribed into markdown by <strong>{author}</strong> who lives near Philadelphia and is a student & project manager at Lambda School. 
+              Thoughts transcribed into markdown by <strong>{author}</strong> who lives near Philadelphia and is a student & project manager at Lambda School. 
               {` `}
             </p>
           </div>
