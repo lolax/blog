@@ -1,5 +1,5 @@
 ---
-title: III - Feature Complete
+title: Capstone III - Feature Complete
 date: '2019-01-25'
 ---
 
@@ -38,21 +38,19 @@ This week I primarily worked with Apollo to get data and requests connected with
 
 The components I worked on this week that had the most complex interconnected logic were the scratcher and the aforementioned buttons responsible for updating a users visit. Whether or not the scratcher is active depends on whether you're viewing the country modal from your own map or from a friend's. If it's your map, the scratcher then needs to know whether "Automated Scratching" is set in your settings (which persist indefinitely on the server). 
 
-![scratcher queries](../../assets/scratcher-queries.png)
+![scratcher queries](../../assets/capstone/scratcher-queries.png)
 
 It will only be scratchable if you're viewing the modal from your map (detemined through props) and your settings indicate that your "Automated Scratching" setting is set to false.
 
 
-![scratcher mutation](../../assets/scratcher-mutation.png)
+![scratcher mutation](../../assets/capstone/scratcher-mutation.png)
 
 The scratcher also receives a callback to invoke upon scratching completion. I created muations and resolvers to update client state for a field I called "scratchingComplete."
 
-![button requests](../../assets/button-request.png)
+![button requests](../../assets/capstone/button-request.png)
 
 I decided to use client state because the scratcher needed to quickly emit to the update visit button that scratching was complete. The speed at which client state can be updated and read by other components has been arguably the most redeeming aspect of Apollo Client. In the button component, it has a query for that client state, which updates a variable in the component that acts as the gatekeeper for the actual updateVisit mutation. When it receives signal that scratching is complete, it calls the mutation to update the visit, then resets the scratcherComplete status on client state.
 
 ## Part 2 - Milestone Reflections
-
-As a part of your journal entry, write ¼ to ½ a page reflecting on your experiences working with a team to convert a disparate set of components into a single, cohesive, and complete product. Describe the challenges you faced and the steps you took to overcome them.
 
 The greatest challenge we faced throughout the process of completing our app has been familiarizing ourselves not only with at least six new services and frameworks, but understanding the intersection of each of these new tools. The undertakings of debugging and integrating disparate components are magnified. We need to not only understand Next, Apollo Client, GraphQL Yoga, Prisma, and Leaflet, but each permutation of interaction between them. Our leading strategy to overcome this challenge has been for everyone to learn as much about all of our stack as possible, rather than each person specializing, to fill in the gaps that would exist in our understanding of how each piece interfaces with the others.

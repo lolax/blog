@@ -1,5 +1,5 @@
 ---
-title: I - Negotiation & Initialization
+title: Capstone I - Negotiation & Initialization
 date: '2019-01-11'
 ---
 

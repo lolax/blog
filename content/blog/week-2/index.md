@@ -1,5 +1,5 @@
 ---
-title: II - Integration
+title: Capstone II - Integration
 date: '2019-01-18'
 ---
 
@@ -49,22 +49,20 @@ While I have more pull requests for front end, my work this week was fairly bala
 
 The task from this I'd like to expound upon was the abstraction and translation of yoga mutations & queries into apollo-client readable requests. These can be written above a component, but early on we discussed that it would be ideal to abstract our apollo queries & mutations out of the components. I made two files; one to export queries and the other to export mutations. Next I had to write the queries and mutations themselves, which involved some modification from how they'd be written in the GraphQL Playground. To write these, I referred to where each query and mutation was defined in the backend. Here is a side-by-side comparison with the apollo query or mutation on the left and its definition in the backend on the right.
 
-![queries](../../assets/query.png)
+![queries](../../assets/capstone/query.png)
 
-![mutations](../../assets/mutation.png)
+![mutations](../../assets/capstone/mutation.png)
 
 After this step, we could import the query or mutation into the relevant component and make use of  it. For the example below, we specified the query and the necessary variables in a Query component. Finally, we dictate how the return data should be displayed.
 
-![query](../../assets/frontend-query.png)
+![query](../../assets/capstone/frontend-query.png)
 
 The result of serveral of these test queries is this output on the client:
 
-![list of friends](../../assets/output.png)
+![list of friends](../../assets/capstone/output.png)
 
 
 
 ## Part 2 - Milestone Reflections
-
-As a part of your journal entry, write ¼ to ½ a page reflecting on your experiences working with a team to integrate several servers, pages, APIs, and services into one project. Describe how your pieces of the project interfaced with and integrated with your teammates.
 
 As last week consisted of instantiating and preparing all of the pieces of our application, this week was dedicated to connecting them. Early on, this involved updating our datamodel for users and the mutation to create new ones to accommodate using Twitter Oauth. This was the first of several instances where multiple potential solutions exisited, often one demanding more from the server and the other relying on more work from logic in the frontend. Integrating our first query into the frontend, fetching all user data, was relatively straightforward. However, it took more time than anticipated to include mutations and queries requiring variables. Ultimately, we exceeded the expectations of this week's milestones. However, the progress we made was undeniably slowed by the newness of our stack. We functioned better as team this week, as we've each learned to choose our battles and avoid needless conflict. One strategy that helped immensely in minimizing confusion and incompatibility within our team as we put the pieces of our application together this week was our frequent pairing sessions. Working in pairs or even threes maximizing team member understanding of our app as a whole. Rather than each person being an expert in one isolated part of it and struggling to see how each piece will fit together, each person on our team has an adequate understanding of the complete architecture. 
