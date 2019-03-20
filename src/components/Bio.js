@@ -34,7 +34,14 @@ function Bio() {
               }}
             />
             <p>
-              Thoughts transcribed into markdown by <strong>{author}</strong> who is a student & project manager at Lambda School. 
+              Thoughts transcribed into markdown by
+                <a 
+                  href="https://lola.dev" 
+                  target="_blank"
+                  style={{
+                    color: `#4564a8`
+                  }}
+                > {author}</a> who is a student & project manager at Lambda School. 
               {` `}
             </p>
           </div>
