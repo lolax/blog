@@ -9,39 +9,38 @@ You want a grandchild component to be able to trigger its grandparent component�
 
 ![prop drilling pattern](../../assets/eventemitter/propdrilling.png)
 
-But there are some issues with this prop drilling pattern:
+**But there are some issues with this prop drilling pattern:**
 
-* It can require a great deal of repetition
-    
-* For example, intermediate components must act as messengers between the desired endpoints (grandparent & grandchild), which makes the event coordination brittle — if you remove or refactor any component in the middle of the chain, it can break your app
-    
-* Furthermore, this pattern becomes more and more cumbersome the deeper your nested components go. You may have a parent component with 5 layers of nested children, and even if only the final child needs the prop drilled function, the prop still has to pass through every single intermediary.
-    
-* Personally, this pattern feels unnatural in that it doesn’t structurally reflect my intent. My desire is to have a grandchild of arbitrary depth be able to signal for the invocation of a function that belongs to its grandparent of arbitrary depth. Ideally, I would even be able to do this across non parent/child component relationships, like sibling or cousin components, which is not easily accommodated by prop drilling.
+&#8227; It can require a great deal of repetition
+
+&#8227; For example, intermediate components must act as messengers between the desired endpoints (grandparent & grandchild), which makes the event coordination brittle — if you remove or refactor any component in the middle of the chain, it can break your app
+
+&#8227; Furthermore, this pattern becomes more and more cumbersome the deeper your nested components go. You may have a parent component with 5 layers of nested children, and even if only the final child needs the prop drilled function, the prop still has to pass through every single intermediary.
+
+&#8227; Personally, this pattern feels unnatural in that it doesn’t structurally reflect my intent. My desire is to have a grandchild of arbitrary depth be able to signal for the invocation of a function that belongs to its grandparent of arbitrary depth. Ideally, I would even be able to do this across non parent/child component relationships, like sibling or cousin components, which is not easily accommodated by prop drilling.
 
 
 Instead of passing a function down as a prop in order to let the grandchild update the grandparent’s state, you could also pass down an initial state (an object, not a function). Then, have the grandchild update that state locally however it likes. Here is an example of that:
 
 ![distributed state pattern](../../assets/eventemitter/distributedstate.png)
 
-There are a number of issues with this distributed state pattern as well:
+**There are a number of issues with this distributed state pattern as well:**
 
-* It creates multiple (conflicting) sources of truth, undermining the integrity of state
-    
-* It doesn’t effectively resolve the core issue with event communication between distant components, just works around it (i.e., you still can’t communicate between sibling or cousin components)
-    
-* It is essentially a more intuitive but less effective method of prop drilling than just passing a function. It may be easier to reason about an object being passed as a prop, but this pattern has all the downsides of the regular function passing prop drilling pattern, as well as its own problems.
+&#8227; It creates multiple (conflicting) sources of truth, undermining the integrity of state
 
+&#8227; It doesn’t effectively resolve the core issue with event communication between distant components, just works around it (i.e., you still can’t communicate between sibling or cousin components)
 
-I’m here to offer you an alternative to these two approaches, which instead meets the following criteria:
+&#8227; It is essentially a more intuitive but less effective method of prop drilling than just passing a function. It may be easier to reason about an object being passed as a prop, but this pattern has all the downsides of the regular function passing prop drilling pattern, as well as its own problems.
 
-* Establishes a single source of truth
-    
-* Eliminates intermediate messengers & reduces prop drilling
-    
-* Better isolates responsibilities of stateful & functional components (ie. stateful components are responsible for calling their own methods to update state; functional components aren’t directly acting on state)
-    
-* Relatively simple to implement; doesn’t require external libraries
+**I’m here to offer you an alternative to these two approaches, which instead meets the following criteria:**
+
+&#8227; Establishes a single source of truth
+
+&#8227; Eliminates intermediate messengers & reduces prop drilling
+
+&#8227; Better isolates responsibilities of stateful & functional components (ie. stateful components are responsible for calling their own methods to update state; functional components aren’t directly acting on state)
+
+&#8227; Relatively simple to implement; doesn’t require external libraries
 
 ## Event Emitter Approach
 
@@ -65,23 +64,23 @@ Finally, I will repeat those same steps for the dispatch: import EventEmitter an
 
 Now your components have a direct line of communication to coordinate events!
 
-Let’s revisit the benefits of this approach:
+**Let’s revisit the benefits of this approach:**
 
-* Single source of truth
-    
-* Event coordination transcends the hierarchy of your app’s composition and eliminates the need for intermediary messenger components to be passed event-related props for components that need them farther down the tree
-    
-* The core idea is familiar (illustrated by dog example) and reflected in human interaction
-    
-* Scales effectively with project/component tree complexity
+&#8227; Single source of truth
 
-A few drawbacks to note:
+&#8227; Event coordination transcends the hierarchy of your app’s composition and eliminates the need for intermediary messenger components to be passed event-related props for components that need them farther down the tree
 
-* The setup it requires may be more work than it’s worth for simple or flat applications with minimal event-related communication between components
+&#8227; The core idea is familiar (illustrated by dog example) and reflected in human interaction
 
-* It may be confusing to other developers, although event emitters are a widespread pattern, as referenced below.
+&#8227; Scales effectively with project/component tree complexity
 
-* If you want to pass multiple parameters to this event emitter, you’ll need to contain them in a single object or array — similar to wrapping multiple elements in a single container `<div>` for a return statement.
+**A few drawbacks to note:**
+
+&#8227; The setup it requires may be more work than it’s worth for simple or flat applications with minimal event-related communication between components
+
+&#8227; It may be confusing to other developers, although event emitters are a widespread pattern, as referenced below
+
+&#8227; If you want to pass multiple parameters to this event emitter, you’ll need to contain them in a single object or array — similar to wrapping multiple elements in a single container `<div>` for a return statement.
 
 ## Context
 
